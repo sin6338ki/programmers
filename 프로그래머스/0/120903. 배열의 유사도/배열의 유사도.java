@@ -6,11 +6,8 @@ class Solution {
         int answer = 0;
         
         for(String s : s1){
-            Stream<String> stream2 = Arrays.stream(s2);
-            long result = stream2.filter(x -> x.equals(s)).count();
-            if(result > 0) answer++;
+            if(Arrays.stream(s2).filter(x -> x.equals(s)).count() > 0) answer++;
         }
-        
         return answer;
     }
 }
