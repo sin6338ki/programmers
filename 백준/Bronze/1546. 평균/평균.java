@@ -1,29 +1,31 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
-public class Main{
-    public static void main(String[] args) throws IOException{
+public class Main {
+
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int subjectCnt = Integer.parseInt(br.readLine());
-        String inputScore = br.readLine();
-        String[] scoreArr = inputScore.split(" ");
-        
-        //과목의 최댓값 찾기
-        int maxScore = Integer.parseInt(scoreArr[0]);
-        for(String score : scoreArr){
-            if(Integer.parseInt(score) > maxScore){
-                maxScore = Integer.parseInt(score);
-            }
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int numberOfSubject = Integer.parseInt(st.nextToken()); //과목수
+        double sumOfScore = 0;
+        double maxScore = 0;
+        st = new StringTokenizer(br.readLine());
+
+        for(int i = 1 ; i <= numberOfSubject ; i++) {
+            int score = Integer.parseInt(st.nextToken());
+            if(score > maxScore) maxScore = score;
+            sumOfScore += score;
         }
-        
-        //새로운 점수 합계 구하기 
-        double newScoreTotal = 0;
-        for(String score : scoreArr){
-            newScoreTotal += Double.parseDouble(score) / maxScore * 100;
-        }
-        
-        //새로운 평균 구하기 
-        double avg = newScoreTotal / subjectCnt;
-        System.out.println(avg);
+
+        double newAverage = getNewAverage(sumOfScore, maxScore, numberOfSubject);
+        System.out.println(newAverage);
     }
+
+    public static double getNewAverage(double sumOfScore, double maxScore, int numberOfSubject) {
+        return  sumOfScore * 100.0 / maxScore / numberOfSubject;
+    }
+
 }
