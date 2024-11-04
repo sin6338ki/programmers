@@ -5,14 +5,14 @@ class Solution {
         String answer = "";
         
         String[] arr = s.split(" ");
-        long min = Long.parseLong(arr[0]);
-        long max = Long.parseLong(arr[0]);
+        long min = Integer.parseInt(arr[0]);
+        long max = Integer.parseInt(arr[0]);
         
         for(int i = 0 ; i < arr.length ; i++){
-            if(Long.parseLong(arr[i]) < min){
-                min = Long.parseLong(arr[i]);
-            }else if(Long.parseLong(arr[i]) > max){
-                max = Long.parseLong(arr[i]);
+            if(Integer.parseInt(arr[i]) < min){
+                min = Integer.parseInt(arr[i]);
+            }else if(Integer.parseInt(arr[i]) > max){
+                max = Integer.parseInt(arr[i]);
             }
         }
         
