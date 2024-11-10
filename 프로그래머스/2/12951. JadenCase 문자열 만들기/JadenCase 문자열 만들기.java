@@ -12,7 +12,7 @@ class Solution {
         }
         
         //맨 처음이 공백이라면 poll()
-        if(myQueue.peek() == ' '){
+        while(myQueue.peek() == ' '){
             answer += myQueue.poll();
         }
         
@@ -23,8 +23,10 @@ class Solution {
             answer += myQueue.poll();
         }
         
+        
         //큐가 빌 때까지 반복
-        while(!myQueue.isEmpty()){
+        while(!myQueue.isEmpty()){    
+            
             if(myQueue.peek() == ' '){
                 answer += myQueue.poll();
                 if(!myQueue.isEmpty() && myQueue.peek() > 96){
